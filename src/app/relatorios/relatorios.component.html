@@ -1,0 +1,54 @@
+<div class="relatorios-container">
+    <h1>Relatórios</h1>
+    <p>Preencha o filtro para realizar uma pesquisa.</p>
+  
+    <div class="filtro">
+      <mat-form-field appearance="fill">
+        <mat-label>Data do aluguel</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Escolha a data">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Modelo do carro</mat-label>
+        <mat-select>
+          <mat-option value="todos">Todos</mat-option>
+          <mat-option value="uno">UNO</mat-option>
+          <mat-option value="palio">PALIO</mat-option>
+          <mat-option value="gol">GOL</mat-option>
+          <mat-option value="siena">SIENA</mat-option>
+          <mat-option value="celta">CELTA</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary">Buscar</button>
+    </div>
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Coluna Data -->
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef> DATA </th>
+        <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+      </ng-container>
+  
+      <!-- Coluna Modelo -->
+      <ng-container matColumnDef="modelo">
+        <th mat-header-cell *matHeaderCellDef> MODELO </th>
+        <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
+      </ng-container>
+  
+      <!-- Outras Colunas -->
+      <!-- Adicione as demais colunas conforme necessário -->
+  
+      <!-- Linha de Cabeçalho -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <!-- Linhas de Dados -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <div class="total-debitos">
+      <p>Soma de débitos: <strong>{{totalDebitos | currency:'BRL'}}</strong></p>
+    </div>
+  </div>
+  
