@@ -1,20 +1,142 @@
 .relatorios-container {
-    padding: 20px;
-  }
-  
-  .filtro {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  .total-debitos {
-    margin-top: 20px;
-    text-align: right;
-    font-size: 16px;
-  }
-  
+  padding: 20px;
+  background-color: #f8f9fa; /* Fundo suave */
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3651a0; /* Azul principal */
+}
+
+p {
+  font-size: 14px;
+  color: #6c757d; /* Cinza leve */
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.mat-form-field {
+  width: 200px;
+}
+
+button {
+  height: 40px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none; /* Remove sombras extras */
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+}
+
+mat-header-cell {
+  font-weight: bold;
+  background-color: #e9ecef;
+  color: #212529;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+mat-cell {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+mat-cell:last-child {
+  font-weight: bold;
+}
+
+.totais {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #212529;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.mat-icon[color="primary"] {
+  color: #28a745; /* Verde para pago */
+}
+
+.mat-icon[color="warn"] {
+  color: #dc3545; /* Vermelho para não pago */
+}
+
+.total-debitos {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 16px;
+  color: #495057;
+  font-weight: bold;
+}
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.sidenav-container {
+  height: 100vh;
+  display: flex;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.content {
+  padding: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  margin-right: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+}

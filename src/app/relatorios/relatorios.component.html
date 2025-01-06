@@ -1,54 +1,132 @@
-<div class="relatorios-container">
-    <h1>Relatórios</h1>
-    <p>Preencha o filtro para realizar uma pesquisa.</p>
-  
-    <div class="filtro">
-      <mat-form-field appearance="fill">
-        <mat-label>Data do aluguel</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Escolha a data">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Modelo do carro</mat-label>
-        <mat-select>
-          <mat-option value="todos">Todos</mat-option>
-          <mat-option value="uno">UNO</mat-option>
-          <mat-option value="palio">PALIO</mat-option>
-          <mat-option value="gol">GOL</mat-option>
-          <mat-option value="siena">SIENA</mat-option>
-          <mat-option value="celta">CELTA</mat-option>
-        </mat-select>
-      </mat-form-field>
-  
-      <button mat-raised-button color="primary">Buscar</button>
+<mat-sidenav-container class="sidenav-container">
+  <!-- Menu lateral -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <div class="menu-content">
+      <button mat-button>
+        <mat-icon>home</mat-icon> Alugueis
+      </button>
+      <button mat-button>
+        <mat-icon>folder</mat-icon> Relatórios
+      </button>
     </div>
+  </mat-sidenav>
+
+  <!-- Conteúdo principal -->
+  <mat-sidenav-content>
+    <!-- Barra superior -->
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Relatórios</span>
+      <span class="spacer"></span>
+      <!-- Ícones adicionais -->
+      <button mat-icon-button aria-label="Notificações">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Perfil">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-toolbar>
   
+<div class="relatorios-container">
+  <h1>Relatórios</h1>
+  <p>Preencha o filtro para realizar uma pesquisa.</p>
+
+  <div class="filtro">
+    <mat-form-field appearance="fill">
+      <mat-label>Data do aluguel</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Escolha a data">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Modelo do carro</mat-label>
+      <mat-select>
+        <mat-option value="todos">Todos</mat-option>
+        <mat-option value="uno">UNO</mat-option>
+        <mat-option value="palio">PALIO</mat-option>
+        <mat-option value="gol">GOL</mat-option>
+        <mat-option value="siena">SIENA</mat-option>
+        <mat-option value="celta">CELTA</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Buscar</button>
+  </div>
+
+  <div class="relatorios-container">
+    <h1>Relatórios de Locação</h1>
+    
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
       <!-- Coluna Data -->
       <ng-container matColumnDef="data">
-        <th mat-header-cell *matHeaderCellDef> DATA </th>
-        <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+        <th mat-header-cell *matHeaderCellDef> Data </th>
+        <td mat-cell *matCellDef="let element"> {{ element.data }} </td>
       </ng-container>
-  
+      
       <!-- Coluna Modelo -->
       <ng-container matColumnDef="modelo">
-        <th mat-header-cell *matHeaderCellDef> MODELO </th>
-        <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
+        <th mat-header-cell *matHeaderCellDef> Modelo </th>
+        <td mat-cell *matCellDef="let element"> {{ element.modelo }} </td>
       </ng-container>
-  
-      <!-- Outras Colunas -->
-      <!-- Adicione as demais colunas conforme necessário -->
-  
-      <!-- Linha de Cabeçalho -->
+      
+      <!-- Coluna KM -->
+      <ng-container matColumnDef="km">
+        <th mat-header-cell *matHeaderCellDef> KM </th>
+        <td mat-cell *matCellDef="let element"> {{ element.km }} </td>
+      </ng-container>
+      
+      <!-- Coluna Cliente -->
+      <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let element"> {{ element.cliente }} </td>
+      </ng-container>
+      
+      <!-- Coluna Telefone -->
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef> Telefone </th>
+        <td mat-cell *matCellDef="let element"> {{ element.telefone }} </td>
+      </ng-container>
+      
+      <!-- Coluna Devolução -->
+      <ng-container matColumnDef="devolucao">
+        <th mat-header-cell *matHeaderCellDef> Devolução </th>
+        <td mat-cell *matCellDef="let element"> {{ element.devolucao }} </td>
+      </ng-container>
+      
+      <!-- Coluna Pago -->
+      <ng-container matColumnDef="pago">
+        <th mat-header-cell *matHeaderCellDef> Pago </th>
+        <td mat-cell *matCellDef="let element">
+          <span [ngClass]="{'badge-success': element.pago, 'badge-danger': !element.pago}">
+            {{ element.pago ? 'SIM' : 'NÃO' }}
+          </span>
+        </td>
+        
+      </ng-container>
+      
+      <!-- Coluna Valor -->
+      <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef> Valor (R$) </th>
+        <td mat-cell *matCellDef="let element"> {{ element.valor | currency:'BRL':'symbol':'1.2-2' }} </td>
+      </ng-container>
+      
+      <!-- Header e Linhas -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <!-- Linhas de Dados -->
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   
-    <div class="total-debitos">
-      <p>Soma de débitos: <strong>{{totalDebitos | currency:'BRL'}}</strong></p>
+    <div class="totais">
+      <p><strong>Total de Débitos:</strong> {{ totalDebitos | currency:'BRL':'symbol':'1.2-2' }}</p>
     </div>
+  </div>  
+
+  <div class="total-debitos">
+    <p>Soma de débitos: <strong>{{totalDebitos | currency:'BRL'}}</strong></p>
   </div>
-  
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container>
