@@ -103,9 +103,15 @@ mat-cell:last-child {
   font-weight: bold;
 }
 
-.sidenav-container {
+/* .sidenav-container {
   height: 100vh;
   display: flex;
+} */
+
+.sidenav-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
 
 .menu-content {
@@ -139,4 +145,56 @@ table {
 mat-toolbar {
   display: flex;
   align-items: center;
+}
+
+mat-sidenav {
+  width: 240px;
+}
+
+mat-sidenav-content {
+  flex: 1;
+  padding: 16px;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.menu-content button {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  margin-right: 8px; /* Espaço entre o ícone e o texto */
+  font-size: 24px; /* Ajuste o tamanho do ícone, se necessário */
+  color: inherit; /* Usa a mesma cor do botão */
+}
+
+.spacer {
+  flex: 1;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: white; /* Ajuste conforme o tema */
+}
+
+.logout-link {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logout-link:hover {
+  text-decoration: underline;
 }
